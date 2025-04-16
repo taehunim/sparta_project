@@ -11,11 +11,11 @@ public class CalculatorLevel1 {
         String operandA;
         String operandB;
         String operator;
+        char operatorA = 'a';
         int operandC = -1;
         int operandD = -1;
         int result = -1; // 값이 할당되지 않는 경우를 막기위한 값 할당 , 초기화가 되지 않을 경우를 대비한 값 할당
-        boolean decision = true ;
-        for(int i = 0; i >= 0; i =+ 0) {        // 무한 반복문
+        while(true) {        // 무한 반복문
 
         // 값 할당
         System.out.println("------------------------------------------");
@@ -23,7 +23,7 @@ public class CalculatorLevel1 {
         System.out.println("계산할 숫자를 입력해주세요.");
         System.out.println("exit를 입력해 종료할 수 있습니다.");
 
-        while(decision) {
+        while(true) {
             System.out.print("숫자: ");
             operandA = scanner.nextLine();      // 유저가 직업 입력
 
@@ -48,25 +48,39 @@ public class CalculatorLevel1 {
             break;
         }
 
-        System.out.println("원하는 연산 기호를 입력해주세요 (+ - * / 중 하나를 입력 해주세요)");
+        System.out.println("원하는 연산 기호를 입력해주세요. (+ - * / 중 하나를 입력 해주세요)");
         System.out.println("exit를 입력해 종료할 수 있습니다.");
-        System.out.print("연산 기호: ");
-        operator = scanner.nextLine();       // operator 입력
 
-        if (operator.equals("exit")) {      // operator exit 루프 탈출
-            System.out.println("프로그램을 종료합니다");
-            break;
+
+        while (true) {
+        System.out.print("연산 기호: ");
+
+            operator = scanner.nextLine();       // operator 입력
+
+            if (operator.equals("exit")) {      // operator exit 루프 탈출
+                System.out.println("프로그램을 종료합니다");
+                break;
+            }
+
+            // char 변환
+            operatorA = operator.charAt(0);
+            if (operatorA == '+' | operatorA == '-' | operatorA == '*' | operatorA == '/') {
+                break;
+            } else {
+                System.out.println("연사자를 입력해주세요. (+ - * / 중 하나를 입력 해주세요)");
+                continue;
+            }
         }
 
         System.out.println("계산할 숫자를 입력해주세요.");
         System.out.println("exit를 입력해 종료할 수 있습니다.");
 
-            while(decision) {
+            while(true) {
                 System.out.print("숫자: ");
                 operandB = scanner.nextLine();      // 유저가 직업 입력
 
                 // for문 종료 조건 3
-                if (operandB.equals("exit")) {
+                if(operandB.equals("exit")) {
                     System.out.println("프로그램을 종료합니다");
                     break;
                 }
@@ -79,36 +93,37 @@ public class CalculatorLevel1 {
                 }
 
                 // 음수 제외 2
-                if (operandD < 0) {
+                if(operandD < 0) {
                     System.out.println("0 이상의 정수를 입력해주세요.");
                     continue;
                 }
 
-                if(operator.equals("/") && (operandD == 0)) {
+                // 분모 0 제외 1
+                if((operatorA == '/') && (operandD == 0)) {
                     System.out.println("제수에는 0이 들어갈 수 없습니다.\n다른 숫자를 입력해주세요");
                     continue;
                 }
                 break;
             }
-            switch (operator) {
-                case "+":
+
+            // 연산식
+            switch(operatorA) {
+                case '+':
                     result = operandC + operandD;
                     break;
-                case "-":
+                case '-':
                     result = operandC - operandD;
                     break;
-                case "*":
+                case '*':
                     result = operandC * operandD;
                     break;
-                case "/":
+                case '/':
                     result = operandC / operandD;
                     break;
             }
-            System.out.println("결과 값 : " + result);
-            //출력
+        System.out.println("결과 값 : " + result);
 
-
-        }
-            }
-        }
+        }       // for
+    }       // main method
+}       // class
 
