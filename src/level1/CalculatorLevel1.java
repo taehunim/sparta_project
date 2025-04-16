@@ -76,10 +76,8 @@ public class CalculatorLevel1 {
                 if (operatorA == '+' || operatorA == '-' || operatorA == '*' || operatorA == '/') {
                     break;
                 }
-            } else {
-                System.out.println("연산자를 입력해주세요. (+ - * / 중 하나를 입력 해주세요)");
-                continue;
             }
+            System.out.println("연산자를 입력해주세요. (+ - * / 중 하나를 입력 해주세요)");
         }
 
         // 전체 루프 탈출
