@@ -1,4 +1,4 @@
-package level2;
+package level3;
 
 public class App {
 
@@ -9,14 +9,14 @@ public class App {
         Input input = new Input();
         InputCheck check = new InputCheck();
         Change change = new Change();
-        Calculator calculator = new Calculator();
+        ArithmeticCalculator calculator = new ArithmeticCalculator();
 
         int result;
-        String strA = "-1";
-        Integer operandA = -1;
-        Integer operandB = -1;
-        Integer something = -1;
-        char operator = ' ';
+        String strA;
+        Double operandA;
+        Double operandB;
+        Double something;
+        char operator;
 
         for (; ; ) {
             output.startCal();
@@ -24,8 +24,8 @@ public class App {
                 output.introIntInput();
                 strA = input.getInputA();
                 check.checkExit(strA);
-                operandA = change.stringToInt(strA);
-                operandA = check.checkNumber(operandA);
+                operandA = change.stringToDouble(strA);
+
                 if (operandA == null) {
                     continue;
                 }
@@ -48,8 +48,8 @@ public class App {
                 output.introIntInput();
                 strA = input.getInputC();
                 check.checkExit(strA);
-                operandB = change.stringToInt(strA);
-                operandB = check.checkNumber(operandB);
+                operandB = change.stringToDouble(strA);
+
                 if (operandB == null) {
                     continue;
                 }
@@ -60,9 +60,10 @@ public class App {
                 break;
             }
 
-            calculator.calculate(operandA, operandB, operator);
-            result = calculator.getResult();
-            System.out.println("계산 결과 = " + result);
+            double resultA = calculator.calculate(operandA, operandB, operator);
+            System.out.println("계산결과 = " + resultA);
+            calculator.addResult(resultA);
+
             for (; ; ) {
                 output.introEnd();
                 output.introEndAdd();
@@ -80,7 +81,7 @@ public class App {
                 strA = check.checkDelete(strA);
                 if (strA.equals(InputCheck.keyA)) {
                     strA = input.getInputE();
-                    something = change.stringToInt(strA);
+                    something = change.stringToDouble(strA);
                     calculator.addResult(something);
                     output.introResultSave();
                     continue;

@@ -1,6 +1,6 @@
-package level2;
+package level3;
 
-public class InputCheck {
+public class InputCheck <T extends Number> {
     //속성
     public final static String keyA = "12312512621123144";
     public final static String keyB = "12312512621123143";
@@ -16,13 +16,7 @@ public class InputCheck {
         }
     }
 
-    Integer checkNumber(Integer value) {
-        if (value == null || value < 0) {
-            return null;
-        } else {
-            return value;
-        }
-    }
+
 
     char checkOperator(char valueA) {
         if (valueA == '+' || valueA == '-' || valueA == '*' || valueA == '/') {

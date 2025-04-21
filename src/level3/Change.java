@@ -1,15 +1,15 @@
-package level2;
+package level3;
 
-public class Change {
+public class Change <T extends Number> {
 
     //속성
 
     //생성자
 
     //기능
-    Integer stringToInt (String valueA) {
+    Double stringToDouble (String valueA) {
         try {
-            return Integer.parseInt(valueA);
+            return Double.parseDouble(valueA);
         } catch (NumberFormatException e) {
             return null;
         }
