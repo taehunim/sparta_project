@@ -11,7 +11,7 @@ public class Change <T extends Number> {
         try {
             return Double.parseDouble(valueA);
         } catch (NumberFormatException e) {
-            return null;
+            return InputCheck.keyD;
         }
     }
 

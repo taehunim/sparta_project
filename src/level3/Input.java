@@ -39,4 +39,10 @@ public class Input {
         String result = scanner.nextLine();
         return result;
     }
+
+    String getInputF() {
+        System.out.print("저장된 수 중 입력한 숫자보다 더 큰 숫자를 검색합니다\n숫자: ");
+        String result = scanner.nextLine();
+        return result;
+    }
 }

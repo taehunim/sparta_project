@@ -26,7 +26,7 @@ public class App {
                 check.checkExit(strA);
                 operandA = change.stringToDouble(strA);
 
-                if (operandA == null) {
+                if (operandA == InputCheck.keyD) {
                     continue;
                 }
                 break;
@@ -50,7 +50,7 @@ public class App {
                 check.checkExit(strA);
                 operandB = change.stringToDouble(strA);
 
-                if (operandB == null) {
+                if (operandB == InputCheck.keyD) {
                     continue;
                 }
                 if ((operator == '/') && (operandB == 0)) {
@@ -68,6 +68,7 @@ public class App {
                 output.introEnd();
                 output.introEndAdd();
                 output.introEndDelete();
+                output.introEndScan();
                 output.introEndEnter();
                 output.introEndExit();
                 strA = input.getInputD();
@@ -79,12 +80,18 @@ public class App {
 
                 strA = check.checkAdd(strA);
                 strA = check.checkDelete(strA);
+                strA = check.checkScan(strA);
                 if (strA.equals(InputCheck.keyA)) {
                     strA = input.getInputE();
                     something = change.stringToDouble(strA);
-                    calculator.addResult(something);
-                    output.introResultSave();
-                    continue;
+                    if (something == InputCheck.keyD) {
+                        output.warnigWrongInput();
+                        continue;
+                    } else {
+                        calculator.addResult(something);
+                        output.introResultSave();
+                        continue;
+                    }
                 }
 
                 if (strA.equals(InputCheck.keyB)) {
@@ -93,10 +100,20 @@ public class App {
                     continue;
                 }
 
-                output.introEndException();
+                if (strA.equals((InputCheck.keyC))) {
+                    strA = input.getInputF();
+                    something = change.stringToDouble(strA);
+                    if (something == InputCheck.keyD) {
+                        output.warnigWrongInput();
+                        continue;
+                    }
+                    calculator.findResult(something);
 
-
+                }
             }
+            output.introEndException();
+
+
         }
     }
 }

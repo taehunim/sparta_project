@@ -2,8 +2,10 @@ package level3;
 
 public class InputCheck <T extends Number> {
     //속성
-    public final static String keyA = "12312512621123144";
-    public final static String keyB = "12312512621123143";
+    public final static String keyA = "2,099,999,957";
+    public final static String keyB = "2,099,999,963";
+    public final static String keyC = "2,099,999,971";
+    public final static double keyD = 2099999981;
     //생성자
 
     //기능
@@ -15,7 +17,6 @@ public class InputCheck <T extends Number> {
             System.exit(0);
         }
     }
-
 
 
     char checkOperator(char valueA) {
@@ -44,6 +45,19 @@ public class InputCheck <T extends Number> {
         }
     }
 
+    String checkScan(String valueA) {
+        if (valueA.equals("scan")) {
+            System.out.println("입력한 숫자보다 큰 수를 조회합니다.");
+            return keyC;
+        } else {
+            return valueA;
+        }
+    }
 
-}
+
+ }
+
+
+
+
 

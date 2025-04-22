@@ -2,6 +2,7 @@ package level3;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 
 public class ArithmeticCalculator <T extends Number> {
@@ -62,8 +63,30 @@ public class ArithmeticCalculator <T extends Number> {
         } else {
             System.out.println("삭제할 요소가 없습니다.");
         }
+    }
+//    void findResult(T input) {
+//        for (T findResult : resultCollection) {
+//            if (input.doubleValue() < findResult.doubleValue()) {
+//                System.out.println("조회한 숫자: " + findResult);
+//            } else {
+//                System.out.println("조회한 숫자보다 큰 숫자가 없습니다.");
+//            }
+//
+//        }
+//    }
+    void findResult(T input) {
+        List<T> resultList = resultCollection.stream()
+                .filter(a -> input.doubleValue() < a.doubleValue())
+                .collect(Collectors.toCollection(ArrayList::new));
+        for (T output : resultList) {
+            System.out.println(output);
+        }
+        if(resultList.size() == 0) {
+            System.out.println("해당 조건에 부합하는 수가 없습니다.");
+        }
 
     }
+
 }
 
 

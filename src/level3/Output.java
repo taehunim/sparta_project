@@ -62,6 +62,10 @@ public class Output {
     final void introResultdelete() {
         System.out.println("삭제 완료");
     }
+
+    final void introEndScan() {
+        System.out.println("scan : 숫자를 조회합니다");
+    }
     }
 
 
